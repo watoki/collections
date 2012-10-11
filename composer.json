@@ -1,0 +1,24 @@
+{
+    "name": "rtens/collections",
+    "description": "Array wrapper for more structured collections for PHP",
+    "keywords": ["collection", "data structure", "watoki"],
+    "homepage": "http://github.com/rtens/collections",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nikolas Martens",
+            "email": "Nikolas.M@rtens.org",
+            "homepage": "http://rtens.org"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.1",
+        "rtens/smokey": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "rtens": "src/"
+        }
+    }
+}
