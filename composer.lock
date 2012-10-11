@@ -1,29 +1,24 @@
 {
-    "hash": "ea592ba8d8d1a11243bc11aa5084f7ed",
+    "hash": "a030adf995d08f8e88a0b35c80bfd306",
     "packages": [
         {
             "name": "rtens/smokey",
-            "version": "0.0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rtens/smokey.git",
-                "reference": "0.0.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/rtens/smokey/zipball/0.0.1",
-                "reference": "0.0.1",
-                "shasum": ""
+                "reference": "0e9fd1d551fdaef91f2ce0b7654d659fc352e691"
             },
             "require": {
                 "php": ">=5.3.2"
             },
-            "time": "2012-10-11 01:37:28",
+            "time": "1349964184",
             "type": "library",
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-0": {
-                    "rtens": "src/"
+                    "spec\\rtens\\smokey": "",
+                    "rtens\\smokey": "src/"
                 }
             },
             "license": [
@@ -50,7 +45,7 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ]
+    "stability-flags": {
+        "rtens/smokey": 20
+    }
 }
