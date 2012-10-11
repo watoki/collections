@@ -1,0 +1,56 @@
+{
+    "hash": "ea592ba8d8d1a11243bc11aa5084f7ed",
+    "packages": [
+        {
+            "name": "rtens/smokey",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rtens/smokey.git",
+                "reference": "0.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/rtens/smokey/zipball/0.0.1",
+                "reference": "0.0.1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "time": "2012-10-11 01:37:28",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "rtens": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nikolas Martens",
+                    "email": "Nikolas.M@rtens.org",
+                    "homepage": "http://rtens.org"
+                }
+            ],
+            "description": "Simple runtime event dispatcher for PHP",
+            "homepage": "http://github.com/rtens/smokey",
+            "keywords": [
+                "event",
+                "event dispatcher",
+                "watoki"
+            ]
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": [
+
+    ]
+}
