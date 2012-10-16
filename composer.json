@@ -14,12 +14,13 @@
     ],
     "require": {
         "php": ">=5.3.2",
-        "rtens/smokey": "@dev"
+        "rtens/smokey": "*"
     },
     "autoload": {
         "psr-0": {
             "spec\\rtens\\collections": "",
             "rtens\\collections": "src/"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
