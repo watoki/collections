@@ -50,7 +50,7 @@ abstract class Collection implements \Countable, \IteratorAggregate {
      * @return mixed
      */
     static public function toCollections($object) {
-        if ($object == null) {
+        if ($object === null) {
             return null;
         }
 
