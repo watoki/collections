@@ -72,11 +72,7 @@ abstract class Collection implements \Countable, \IteratorAggregate {
         $lastKey = -1;
 
         foreach ($object as $key => $element) {
-            if (is_array($element)) {
-                /** @var $element array */
-                $element = self::toCollections($element);
-            }
-            $elements[$key] = $element;
+            $elements[$key] = self::toCollections($element);
 
             if (!is_int($key) || intval($key) != $lastKey + 1) {
                 $isList = false;
