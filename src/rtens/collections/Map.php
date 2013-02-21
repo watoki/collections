@@ -2,7 +2,6 @@
 namespace rtens\collections;
 
 use rtens\collections\events\MapSetEvent;
-use rtens\collections\events\MapGetEvent;
 use rtens\collections\events\MapRemoveEvent;
 
 /**
@@ -29,11 +28,7 @@ class Map extends Collection {
      */
     public function get($key) {
         $hash = $this->hash($key);
-        if (!array_key_exists($hash, $this->elements)) {
-            throw new \InvalidArgumentException('Key does not exist: ' . $hash);
-        }
         $value = $this->elements[$hash];
-        $this->fire(new MapGetEvent($key, $value));
         return $value;
     }
 
