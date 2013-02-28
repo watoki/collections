@@ -124,11 +124,11 @@ class Liste extends Collection {
     }
 
     /**
-     * @param int $start
-     * @param int $length
+     * @param int $start Use negative numbers to count from the end.
+     * @param int|null $length Omit to include last element. User negative numbers to count from the end.
      * @return Liste
      */
-    public function slice($start, $length) {
+    public function slice($start, $length = null) {
         $slice = array_slice($this->elements, $start, $length);
         $this->clean();
         return new Liste($slice);
