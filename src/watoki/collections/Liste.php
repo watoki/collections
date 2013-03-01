@@ -1,8 +1,8 @@
 <?php
-namespace rtens\collections;
+namespace watoki\collections;
 
-use rtens\collections\events\ListCreateEvent;
-use rtens\collections\events\ListDeleteEvent;
+use watoki\collections\events\ListCreateEvent;
+use watoki\collections\events\ListDeleteEvent;
 
 /**
  * A number of elements in sequential order.
@@ -169,7 +169,7 @@ class Liste extends Collection {
     }
 
     /**
-     * @return \rtens\collections\Liste
+     * @return \watoki\collections\Liste
      */
     public function copy() {
         return new Liste($this->elements);
@@ -183,7 +183,7 @@ class Liste extends Collection {
      * @static
      * @param string $separator
      * @param string $string
-     * @return \rtens\collections\Liste
+     * @return \watoki\collections\Liste
      */
     public static function split($separator, $string) {
         return new Liste(explode($separator, $string));

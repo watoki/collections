@@ -1,8 +1,8 @@
 <?php
-namespace rtens\collections;
+namespace watoki\collections;
 
-use rtens\collections\events\SetPutEvent;
-use rtens\collections\events\SetRemoveEvent;
+use watoki\collections\events\SetPutEvent;
+use watoki\collections\events\SetRemoveEvent;
 
 /**
  * Contains a unique set of elements without order.

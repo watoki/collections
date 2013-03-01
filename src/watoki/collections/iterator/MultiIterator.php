@@ -1,14 +1,14 @@
 <?php
-namespace rtens\collections\iterator;
+namespace watoki\collections\iterator;
 
-use rtens\collections\Liste;
+use watoki\collections\Liste;
 
 class MultiIterator implements \Iterator {
 
     static $CLASSNAME = __CLASS__;
 
     /**
-     * @var \rtens\collections\Liste|\Iterator[]
+     * @var \watoki\collections\Liste|\Iterator[]
      */
     private $iterators;
 

@@ -1,5 +1,5 @@
 <?php
-namespace rtens\collections\events;
+namespace watoki\collections\events;
 
 class MapRemoveEvent extends MapEvent {
 

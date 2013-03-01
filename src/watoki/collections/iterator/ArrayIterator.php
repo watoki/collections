@@ -1,5 +1,5 @@
 <?php
-namespace rtens\collections\iterator;
+namespace watoki\collections\iterator;
 
 class ArrayIterator implements \Iterator {
 

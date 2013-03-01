@@ -1,5 +1,5 @@
 <?php
-namespace rtens\collections\events;
+namespace watoki\collections\events;
 
 class ListCreateEvent extends ListEvent {
 

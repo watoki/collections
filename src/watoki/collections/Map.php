@@ -1,8 +1,8 @@
 <?php
-namespace rtens\collections;
+namespace watoki\collections;
 
-use rtens\collections\events\MapSetEvent;
-use rtens\collections\events\MapRemoveEvent;
+use watoki\collections\events\MapSetEvent;
+use watoki\collections\events\MapRemoveEvent;
 
 /**
  * Contains a key-value map of elements.

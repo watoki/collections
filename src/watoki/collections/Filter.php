@@ -1,5 +1,5 @@
 <?php
-namespace rtens\collections;
+namespace watoki\collections;
 
 interface Filter {
 

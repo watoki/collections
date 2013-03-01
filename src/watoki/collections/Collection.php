@@ -1,9 +1,9 @@
 <?php
-namespace rtens\collections;
+namespace watoki\collections;
 
-use rtens\smokey\EventDispatcher;
-use rtens\collections\iterator\ArrayIterator;
-use rtens\collections\events\CollectionEvent;
+use watoki\smokey\EventDispatcher;
+use watoki\collections\iterator\ArrayIterator;
+use watoki\collections\events\CollectionEvent;
 
 /**
  * A bunch of elements. Base class for List, Set and Map
@@ -18,7 +18,7 @@ abstract class Collection implements \Countable, \IteratorAggregate {
     protected $elements;
 
     /**
-     * @var \rtens\smokey\EventDispatcher
+     * @var \watoki\smokey\EventDispatcher
      */
     private $dispatcher;
 
@@ -171,8 +171,8 @@ abstract class Collection implements \Countable, \IteratorAggregate {
     /**
      * Filters all elements out that don't match the given filter.
      *
-     * @param \rtens\collections\Filter $filter
-     * @return \rtens\collections\Collection A new Collection with the filtered elements
+     * @param \watoki\collections\Filter $filter
+     * @return \watoki\collections\Collection A new Collection with the filtered elements
      */
     public function filter(Filter $filter) {
         $filtered = array();
