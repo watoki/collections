@@ -36,12 +36,13 @@ class Map extends Collection {
      * Removes element with given key.
      *
      * @param mixed $key
-     * @return void
+     * @return mixed The value of the removed key
      */
     public function remove($key) {
         $value = $this->elements[$this->hash($key)];
         unset($this->elements[$this->hash($key)]);
         $this->fire(new MapRemoveEvent($key, $value));
+        return $value;
     }
 
     /**
