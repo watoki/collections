@@ -171,13 +171,13 @@ abstract class Collection implements \Countable, \IteratorAggregate {
     /**
      * Filters all elements out that don't match the given filter.
      *
-     * @param \watoki\collections\Filter $filter
+     * @param \callable $matches
      * @return \watoki\collections\Collection A new Collection with the filtered elements
      */
-    public function filter(Filter $filter) {
+    public function filter($matches) {
         $filtered = array();
         foreach ($this as $element) {
-            if ($filter->matches($element)) {
+            if ($matches($element)) {
                 $filtered[] = $element;
             }
         }
