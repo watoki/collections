@@ -11,6 +11,8 @@ class Map extends Collection {
 
     static $CLASSNAME = __CLASS__;
 
+    private $hashes = array();
+
     /**
      * @param mixed $key
      * @param mixed $value
@@ -56,7 +58,23 @@ class Map extends Collection {
      * @return Set With key of this map as elements.
      */
     public function keys() {
-        return new Set(array_keys($this->elements));
+        $keys = array();
+        foreach (array_keys($this->elements) as $key) {
+            $keys[] = $this->unhash($key);
+        }
+        return new Set($keys);
+    }
+
+    /**
+     * @param mixed $value
+     * @return mixed|null
+     */
+    public function keyOf($value) {
+        $key = array_search($value, $this->elements);
+        if ($key === false) {
+            return null;
+        }
+        return $this->unhash($key);
     }
 
     /**
@@ -88,9 +106,18 @@ class Map extends Collection {
      */
     private function hash($key) {
         if (is_object($key)) {
-            return spl_object_hash($key);
+            $hash = spl_object_hash($key);
+            $this->hashes[$hash] = $key;
+            return $hash;
         }
 
+        return $key;
+    }
+
+    private function unhash($key) {
+        if (array_key_exists($key, $this->hashes)) {
+            return $this->hashes[$key];
+        }
         return $key;
     }
 }
