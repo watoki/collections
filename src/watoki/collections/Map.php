@@ -120,4 +120,11 @@ class Map extends Collection {
         }
         return $key;
     }
+
+    public function merge(Map $map) {
+        foreach ($map->elements as $key => $value) {
+            $this->set($key, $value);
+        }
+        return $this;
+    }
 }
