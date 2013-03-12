@@ -134,6 +134,12 @@ class Liste extends Collection {
         return new Liste($slice);
     }
 
+    public function splice($start, $length = null, Liste $replacement = null) {
+        $retval = array_splice($this->elements, $start, $length, $replacement ? $replacement->toArray() : null);
+        $this->clean();
+        return new Liste($retval);
+    }
+
     /**
      * @param $element
      * @return bool True if the list contains given element.
