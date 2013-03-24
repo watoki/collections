@@ -181,6 +181,13 @@ class Liste extends Collection {
         return new Liste($this->elements);
     }
 
+    /**
+     * @return Liste
+     */
+    public function deepCopy() {
+        return parent::deepCopy();
+    }
+
     private function clean() {
         $this->elements = array_values($this->elements);
     }

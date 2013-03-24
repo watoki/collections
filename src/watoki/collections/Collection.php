@@ -108,6 +108,19 @@ abstract class Collection implements \Countable, \IteratorAggregate {
      */
     abstract public function copy();
 
+    /**
+     * @return Collection
+     */
+    public function deepCopy() {
+        $copy = $this->copy();
+        foreach ($copy->elements as $key => $value) {
+            if ($value instanceof Collection) {
+                $copy->elements[$key] = $value->copy();
+            }
+        }
+        return $copy;
+    }
+
     public function __construct(array $elements = array()) {
         $this->elements = $elements;
     }

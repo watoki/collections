@@ -101,6 +101,13 @@ class Map extends Collection {
     }
 
     /**
+     * @return Map
+     */
+    public function deepCopy() {
+        return parent::deepCopy();
+    }
+
+    /**
      * @param mixed $key
      * @return mixed|string Hash value of given key
      */

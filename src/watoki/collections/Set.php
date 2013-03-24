@@ -71,4 +71,11 @@ class Set extends Collection {
     public function copy() {
         return new Set($this->elements);
     }
+
+    /**
+     * @return Set
+     */
+    public function deepCopy() {
+        return parent::deepCopy();
+    }
 }
