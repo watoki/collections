@@ -69,7 +69,7 @@ class Set extends Collection {
      * @return Collection
      */
     public function copy() {
-        return new Set($this->elements);
+        return parent::copy();
     }
 
     /**

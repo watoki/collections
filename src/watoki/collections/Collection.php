@@ -104,12 +104,14 @@ abstract class Collection implements \Countable, \IteratorAggregate {
 
     /**
      * @abstract
-     * @return Collection
+     * @return static
      */
-    abstract public function copy();
+    public function copy() {
+        return new static($this->elements);
+    }
 
     /**
-     * @return Collection
+     * @return static
      */
     public function deepCopy() {
         $copy = $this->copy();

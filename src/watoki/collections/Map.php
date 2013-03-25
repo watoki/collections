@@ -97,7 +97,7 @@ class Map extends Collection {
      * @return Map
      */
     public function copy() {
-        return new Map($this->elements);
+        return parent::copy();
     }
 
     /**
