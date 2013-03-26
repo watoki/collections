@@ -131,7 +131,7 @@ class Liste extends Collection {
     public function slice($start, $length = null) {
         $slice = array_slice($this->elements, $start, $length);
         $this->clean();
-        return new static($slice);
+        return new Liste($slice);
     }
 
     /**
@@ -143,7 +143,7 @@ class Liste extends Collection {
     public function splice($start, $length = null, Liste $replacement = null) {
         $retval = array_splice($this->elements, $start, $length, $replacement ? $replacement->toArray() : null);
         $this->clean();
-        return new static($retval);
+        return new Liste($retval);
     }
 
     /**
@@ -205,6 +205,6 @@ class Liste extends Collection {
      * @return \watoki\collections\Liste
      */
     public static function split($separator, $string) {
-        return new static(explode($separator, $string));
+        return new Liste(explode($separator, $string));
     }
 }
