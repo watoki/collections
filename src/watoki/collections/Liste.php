@@ -101,6 +101,14 @@ class Liste extends Collection {
     }
 
     /**
+     * @param mixed $element
+     * @return mixed The removed element
+     */
+    public function removeElement($element) {
+        return $this->remove($this->indexOf($element));
+    }
+
+    /**
      * Removes and returns the last element of the list.
      *
      * @return mixed
