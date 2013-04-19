@@ -8,7 +8,7 @@ use watoki\collections\events\CollectionEvent;
 /**
  * A bunch of elements. Base class for List, Set and Map
  */
-abstract class Collection implements \Countable, \IteratorAggregate {
+abstract class Collection implements \Countable, \IteratorAggregate, \ArrayAccess {
 
     static $CLASSNAME = __CLASS__;
 
@@ -210,5 +210,25 @@ abstract class Collection implements \Countable, \IteratorAggregate {
             return null;
         }
         return reset($this->elements);
+    }
+
+    public function offsetExists($offset) {
+        return array_key_exists($offset, $this->elements);
+    }
+
+    public function offsetGet($offset) {
+        return $this->elements[$offset];
+    }
+
+    public function offsetSet($offset, $value) {
+        if (isset($offset)) {
+            $this->elements[$offset] = $value;
+        } else {
+            $this->elements[] = $value;
+        }
+    }
+
+    public function offsetUnset($offset) {
+        unset($this->elements[$offset]);
     }
 }
