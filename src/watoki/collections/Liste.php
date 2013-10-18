@@ -189,7 +189,7 @@ class Liste extends Collection {
     }
 
     /**
-     * @return \watoki\collections\Liste
+     * @return static
      */
     public function copy() {
         return parent::copy();

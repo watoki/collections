@@ -104,7 +104,7 @@ abstract class Collection implements \Countable, \IteratorAggregate, \ArrayAcces
 
     /**
      * @abstract
-     * @return self
+     * @return static
      */
     public function copy() {
         return new static($this->elements);
@@ -114,6 +114,7 @@ abstract class Collection implements \Countable, \IteratorAggregate, \ArrayAcces
      * @return static
      */
     public function deepCopy() {
+        /** @var self $copy */
         $copy = $this->copy();
         foreach ($copy->elements as $key => $value) {
             if ($value instanceof Collection) {
@@ -197,6 +198,7 @@ abstract class Collection implements \Countable, \IteratorAggregate, \ArrayAcces
             }
         }
 
+        /** @var self $copy */
         $copy = $this->copy();
         $copy->elements = $filtered;
         return $copy;
