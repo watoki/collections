@@ -21,6 +21,9 @@ class Liste extends Collection {
      * @return mixed Item at given index
      */
     public function get($index) {
+        if ($index < 0) {
+            $index = $this->count() + $index;
+        }
         if (!array_key_exists($index, $this->elements)) {
             throw new \InvalidArgumentException('Index not set: ' . $index);
         }
