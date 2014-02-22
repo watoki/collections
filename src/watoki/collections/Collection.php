@@ -104,7 +104,7 @@ abstract class Collection implements \Countable, \IteratorAggregate, \ArrayAcces
 
     /**
      * @abstract
-     * @return static
+     * @return self
      */
     public function copy() {
         return new static($this->elements);
@@ -114,7 +114,6 @@ abstract class Collection implements \Countable, \IteratorAggregate, \ArrayAcces
      * @return static
      */
     public function deepCopy() {
-        /** @var self $copy */
         $copy = $this->copy();
         foreach ($copy->elements as $key => $value) {
             if ($value instanceof Collection) {
@@ -187,21 +186,23 @@ abstract class Collection implements \Countable, \IteratorAggregate, \ArrayAcces
     /**
      * Filters all elements out that don't match the given filter.
      *
-     * @param \callable $matches
-     * @return \watoki\collections\Collection A new Collection with the filtered elements
+     * @param \callable|Matcher $matcher
+     * @return Set A new Set with the filtered elements
      */
-    public function filter($matches) {
+    public function filter($matcher) {
         $filtered = array();
+        if ($matcher instanceof Matcher) {
+            $matcher = function ($element) use ($matcher) {
+                return $matcher->matches($element);
+            };
+        }
         foreach ($this as $element) {
-            if ($matches($element)) {
+            if ($matcher($element)) {
                 $filtered[] = $element;
             }
         }
 
-        /** @var self $copy */
-        $copy = $this->copy();
-        $copy->elements = $filtered;
-        return $copy;
+        return new Set($filtered);
     }
 
     /**
