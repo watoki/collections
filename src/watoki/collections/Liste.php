@@ -81,7 +81,7 @@ class Liste extends Collection {
         $this->fire(new ListCreateEvent($element, $index));
     }
 
-    public function insertAll(Liste $list, $index) {
+    public function insertAll(Collection $list, $index) {
         array_splice($this->elements, $index, 0, $list->elements);
         $this->clean();
         foreach ($list->elements as $i => $element) {
