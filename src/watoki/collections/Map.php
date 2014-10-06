@@ -128,8 +128,8 @@ class Map extends Collection {
         return $key;
     }
 
-    public function merge(Map $map) {
-        foreach ($map->elements as $key => $value) {
+    public function merge(Collection $collection) {
+        foreach ($collection->elements as $key => $value) {
             $this->set($key, $value);
         }
         return $this;
