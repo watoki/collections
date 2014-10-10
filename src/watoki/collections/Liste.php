@@ -56,6 +56,16 @@ class Liste extends Collection {
     }
 
     /**
+     * @param Collection $collection
+     * @return void
+     */
+    public function appendAll(Collection $collection) {
+        foreach ($collection->elements as $element) {
+            $this->append($element);
+        }
+    }
+
+    /**
      * Inserts the given element to the beginning of the list.
      *
      * @param mixed $element
@@ -76,9 +86,7 @@ class Liste extends Collection {
      * @return void
      */
     public function insert($element, $index) {
-        array_splice($this->elements, $index, 0, array($element));
-        $this->clean();
-        $this->fire(new ListCreateEvent($element, $index));
+        $this->insertAll(new Liste(array($element)), $index);
     }
 
     public function insertAll(Collection $list, $index) {
