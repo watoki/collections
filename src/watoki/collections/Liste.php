@@ -11,8 +11,15 @@ class Liste extends Collection {
 
     static $CLASSNAME = __CLASS__;
 
-    public function __construct(array $elements = array()) {
-        parent::__construct(array_values($elements));
+    /**
+     * @param array|Collection $elements
+     */
+    public function __construct($elements = array()) {
+        parent::__construct(array_values(
+                $elements instanceof Collection
+                        ? $elements->elements
+                        : $elements
+        ));
     }
 
     /**

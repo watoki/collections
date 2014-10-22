@@ -23,6 +23,16 @@ abstract class Collection implements \Countable, \IteratorAggregate, \ArrayAcces
     private $dispatcher;
 
     /**
+     * @param array|Collection $elements
+     */
+    public function __construct($elements = array()) {
+        if ($elements instanceof Collection) {
+            $elements = $elements->elements;
+        }
+        $this->elements = $elements;
+    }
+
+    /**
      * @static
      * @param array $array
      * @return Map
@@ -121,10 +131,6 @@ abstract class Collection implements \Countable, \IteratorAggregate, \ArrayAcces
             }
         }
         return $copy;
-    }
-
-    public function __construct(array $elements = array()) {
-        $this->elements = $elements;
     }
 
     protected function getDispatcher() {
