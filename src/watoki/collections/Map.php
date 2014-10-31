@@ -134,4 +134,13 @@ class Map extends Collection {
         }
         return $this;
     }
+
+    /**
+     * @return Liste
+     */
+    public function asList() {
+        return new Liste($this->elements);
+    }
+
+
 }

@@ -190,25 +190,33 @@ abstract class Collection implements \Countable, \IteratorAggregate, \ArrayAcces
     }
 
     /**
-     * Filters all elements out that don't match the given filter.
+     * Filters all elements out that don't match the given matcher.
      *
-     * @param \callable|Matcher $matcher
-     * @return Set A new Set with the filtered elements
+     * @param callable $matcher Is called with each element and its key
+     * @return static
      */
     public function filter($matcher) {
         $filtered = array();
-        if ($matcher instanceof Matcher) {
-            $matcher = function ($element) use ($matcher) {
-                return $matcher->matches($element);
-            };
-        }
-        foreach ($this as $element) {
-            if ($matcher($element)) {
-                $filtered[] = $element;
+        foreach ($this as $key => $element) {
+            if (call_user_func($matcher, $element, $key)) {
+                $filtered[$key] = $element;
             }
         }
 
-        return new Set($filtered);
+        return new static($filtered);
+    }
+
+    /**
+     * @param callable $callback Is called with each element and its key
+     * @return static
+     */
+    public function map($callback) {
+        /** @var Collection $mapped */
+        $mapped = array();
+        foreach ($this->elements as $key => $element) {
+            $mapped[$key] = call_user_func($callback, $element, $key);
+        }
+        return new static($mapped);
     }
 
     /**
