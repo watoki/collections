@@ -78,6 +78,18 @@ class Map extends Collection {
     }
 
     /**
+     * @param Set $keys
+     * @return Map with only the given keys
+     */
+    public function select(Set $keys) {
+        $selection = new Map();
+        foreach ($keys as $key) {
+            $selection->set($key, $this->get($key));
+        }
+        return $selection;
+    }
+
+    /**
      * @param mixed $key
      * @return bool
      */
@@ -141,6 +153,5 @@ class Map extends Collection {
     public function asList() {
         return new Liste($this->elements);
     }
-
 
 }
