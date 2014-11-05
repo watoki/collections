@@ -78,4 +78,12 @@ class Set extends Collection {
     public function deepCopy() {
         return parent::deepCopy();
     }
+
+    /**
+     * @param int $max
+     * @return Set With at most $max elements
+     */
+    public function limit($max) {
+        return new Set(array_slice($this->elements, 0, $max));
+    }
 }
