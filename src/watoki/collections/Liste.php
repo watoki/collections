@@ -55,32 +55,35 @@ class Liste extends Collection {
      * Adds element to end of list.
      *
      * @param mixed $element
-     * @return void
+     * @return static
      */
     public function append($element) {
         $this->elements[] = $element;
         $this->fire(new ListCreateEvent($element, $this->count() - 1));
+        return $this;
     }
 
     /**
      * @param Collection $collection
-     * @return void
+     * @return static
      */
     public function appendAll(Collection $collection) {
         foreach ($collection->elements as $element) {
             $this->append($element);
         }
+        return $this;
     }
 
     /**
      * Inserts the given element to the beginning of the list.
      *
      * @param mixed $element
-     * @return void
+     * @return static
      */
     public function unshift($element) {
         $this->insert($element, 0);
         $this->fire(new ListCreateEvent($element, 0));
+        return $this;
     }
 
     /**
@@ -90,18 +93,25 @@ class Liste extends Collection {
      *
      * @param mixed $element
      * @param int $index
-     * @return void
+     * @return static
      */
     public function insert($element, $index) {
         $this->insertAll(new Liste(array($element)), $index);
+        return $this;
     }
 
+    /**
+     * @param Collection $list
+     * @param int $index
+     * @return static
+     */
     public function insertAll(Collection $list, $index) {
         array_splice($this->elements, $index, 0, $list->elements);
         $this->clean();
         foreach ($list->elements as $i => $element) {
             $this->fire(new ListCreateEvent($element, $index + $i));
         }
+        return $this;
     }
 
     /**
@@ -182,6 +192,14 @@ class Liste extends Collection {
 
     public function isInBound($index) {
         return count($this->elements) > $index;
+    }
+
+    /**
+     * @param Liste $subtrahend
+     * @return Liste
+     */
+    public function diff(Liste $subtrahend) {
+        return new Liste(array_diff($this->elements, $subtrahend->elements));
     }
 
     /**
