@@ -84,7 +84,9 @@ class Map extends Collection {
     public function select(Set $keys) {
         $selection = new Map();
         foreach ($keys as $key) {
-            $selection->set($key, $this->get($key));
+            if ($this->has($key)) {
+                $selection->set($key, $this->get($key));
+            }
         }
         return $selection;
     }
